@@ -2,7 +2,10 @@ import json
 from functools import update_wrapper
 
 from django.contrib import admin
-from django.conf.urls import url
+try:
+    from django.conf.urls import url
+except ImportError:
+    from django.urls import re_path as url
 from django.conf import settings
 try:
     from django.contrib.contenttypes.generic import GenericForeignKey,  GenericTabularInline, GenericStackedInline
@@ -14,7 +17,10 @@ from django.contrib.contenttypes.models import ContentType
 try:
     from django.utils.encoding import force_text
 except ImportError:
-    from django.utils.encoding import force_unicode as force_text
+    try:
+        from django.utils.encoding import force_unicode as force_text
+    except:
+        from django.utils.encoding import force_str as force_text
 from django.utils.text import capfirst
 from django.contrib.admin.widgets import url_params_from_lookup_dict
 from django.http import HttpResponse, HttpResponseNotAllowed, Http404
