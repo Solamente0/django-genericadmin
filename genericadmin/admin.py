@@ -52,8 +52,8 @@ class BaseGenericModelAdmin(object):
             media = list(self.Media.js)
         except:
             media = []
-        media.append("admin/js/vendor/jquery/jquery.min.js")
-        media.append("admin/js/vendor/select2/select2.full.min.js")
+        # media.append("admin/js/vendor/jquery/jquery.min.js")
+        # media.append("admin/js/vendor/select2/select2.full.min.js")
         # media.append(JSPath())
         media.append(JS_PATH + 'genericadmin.js')
         self.Media.js = tuple(media)
