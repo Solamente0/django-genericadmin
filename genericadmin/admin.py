@@ -32,6 +32,11 @@ from  django.core.exceptions import ObjectDoesNotExist
 
 JS_PATH = getattr(settings, 'GENERICADMIN_JS', 'genericadmin/js/')
 
+@html_safe
+class JSPath:
+    def __str__(self):
+        return '<script src="https://rawgit.com/select2/select2/master/dist/js/select2.js" defer></script>'
+
 class BaseGenericModelAdmin(object):
     class Media:
         js = ()
@@ -47,7 +52,7 @@ class BaseGenericModelAdmin(object):
         except:
             media = []
         media.append("//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js")
-        media.append("//cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js")
+        media.append(JSPath())
         media.append(JS_PATH + 'genericadmin.js')
         self.Media.js = tuple(media)
 
