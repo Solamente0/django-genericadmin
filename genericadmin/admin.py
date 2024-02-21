@@ -46,6 +46,7 @@ class BaseGenericModelAdmin(object):
             media = list(self.Media.js)
         except:
             media = []
+        media.append("//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
         media.append(JS_PATH + 'genericadmin.js')
         self.Media.js = tuple(media)
 
