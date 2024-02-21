@@ -29,6 +29,7 @@ try:
 except ImportError:
     from django.contrib.admin.options import IS_POPUP_VAR
 from  django.core.exceptions import ObjectDoesNotExist
+from django.utils.html import html_safe
 
 JS_PATH = getattr(settings, 'GENERICADMIN_JS', 'genericadmin/js/')
 
